@@ -1,9 +1,16 @@
+# Ignore everything in target/
 target/
+
+# Except for the specific JAR file you want to include
 !target/demo-0.0.1-SNAPSHOT.jar
+
+# Ignore all JAR, WAR, CLASS, LOG files
 *.jar
 *.war
 *.class
 *.log
+
+# Ignore git and node_modules directories
 .git
 .gitignore
 node_modules

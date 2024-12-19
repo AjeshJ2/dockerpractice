@@ -5,10 +5,14 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copy the jar file from the local machine to the container
-COPY target/demo-0.0.1-SNAPSHOT.jar /app/demo-0.0.1-SNAPSHOT.jar
+COPY target/demo-0.0.1-SNAPSHOT.jar /app.jar
+
 
 # Expose the port that your app will run on
 EXPOSE 8080
 
 # Run the jar file
-ENTRYPOINT ["java", "-jar", "/app/demo-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
+
+
+#This file tells Docker how to package your application into a container.
