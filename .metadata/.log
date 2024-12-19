@@ -1018,3 +1018,578 @@ java.util.concurrent.CompletionException: org.eclipse.lsp4j.jsonrpc.ResponseErro
 	at java.base/java.lang.Thread.run(Thread.java:840)
 Caused by: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
 	... 11 more
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-12-19 18:54:02.447
+!MESSAGE ExecutionException occurred during shutdown of EndpointProxy for org.eclipse.lsp4j.jsonrpc.RemoteEndpoint@d6fec8d
+!STACK 0
+java.util.concurrent.ExecutionException: org.eclipse.lsp4j.jsonrpc.JsonRpcException: java.io.IOException: The pipe is being closed
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:396)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$10(LanguageServerWrapper.java:493)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+Caused by: org.eclipse.lsp4j.jsonrpc.JsonRpcException: java.io.IOException: The pipe is being closed
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageConsumer.consume(StreamMessageConsumer.java:72)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$3(LanguageServerWrapper.java:310)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.request(RemoteEndpoint.java:161)
+	at org.eclipse.lsp4j.jsonrpc.services.EndpointProxy.invoke(EndpointProxy.java:91)
+	at jdk.proxy24/jdk.proxy24.$Proxy79.shutdown(Unknown Source)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$10(LanguageServerWrapper.java:491)
+	... 7 more
+Caused by: java.io.IOException: The pipe is being closed
+	at java.base/java.io.FileOutputStream.writeBytes(Native Method)
+	at java.base/java.io.FileOutputStream.write(FileOutputStream.java:349)
+	at java.base/java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:81)
+	at java.base/java.io.BufferedOutputStream.flush(BufferedOutputStream.java:142)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageConsumer.consume(StreamMessageConsumer.java:69)
+	... 12 more
+
+!ENTRY org.eclipse.lsp4e 2 0 2024-12-19 18:56:31.180
+!MESSAGE Could not get hover region due to timeout after 1000 milliseconds
+!STACK 0
+java.util.concurrent.TimeoutException
+	at java.base/java.util.concurrent.CompletableFuture.timedGet(CompletableFuture.java:1960)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2095)
+	at org.eclipse.lsp4e.operations.hover.LSPTextHover.getHoverRegion(LSPTextHover.java:155)
+	at org.eclipse.ui.internal.genericeditor.hover.CompositeTextHover.getHoverRegion(CompositeTextHover.java:101)
+	at org.eclipse.jface.text.TextViewerHoverManager.computeInformation(TextViewerHoverManager.java:128)
+	at org.eclipse.jface.text.AbstractInformationControlManager.doShowInformation(AbstractInformationControlManager.java:1101)
+	at org.eclipse.jface.text.AbstractHoverInformationControlManager$MouseTracker.mouseHover(AbstractHoverInformationControlManager.java:511)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:212)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4273)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1066)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4071)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3659)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1155)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:342)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:648)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:342)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:555)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:402)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:651)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:588)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1459)
+
+!ENTRY org.eclipse.lsp4e 2 0 2024-12-19 18:56:32.184
+!MESSAGE Could not get hover information due to timeout after 1000 milliseconds
+!STACK 0
+java.util.concurrent.TimeoutException
+	at java.base/java.util.concurrent.CompletableFuture.timedGet(CompletableFuture.java:1960)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2095)
+	at org.eclipse.lsp4e.operations.hover.LSPTextHover.getHoverInfo(LSPTextHover.java:76)
+	at org.eclipse.ui.internal.genericeditor.hover.CompositeTextHover.getHoverInfo2(CompositeTextHover.java:60)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.eclipse.linuxtools.docker.ui 4 0 2024-12-19 20:21:32.498
+!MESSAGE Unable to find the launch configuration to build the Docker image from the selected Dockerfile.
+!STACK 0
+org.eclipse.linuxtools.docker.core.DockerException: Unable to find the launch configuration to build the Docker image from the selected Dockerfile.
+	at org.eclipse.linuxtools.internal.docker.ui.launch.BuildDockerImageShortcut.launch(BuildDockerImageShortcut.java:71)
+	at org.eclipse.linuxtools.internal.docker.ui.launch.BaseResourceAwareLaunchShortcut.launch(BaseResourceAwareLaunchShortcut.java:90)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchShortcutExtension.launch(LaunchShortcutExtension.java:415)
+	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.launchShortcut(ContextRunner.java:262)
+	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.selectAndLaunch(ContextRunner.java:188)
+	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.launch(ContextRunner.java:100)
+	at org.eclipse.debug.ui.actions.AbstractLaunchToolbarAction.runInternal(AbstractLaunchToolbarAction.java:90)
+	at org.eclipse.debug.ui.actions.AbstractLaunchHistoryAction.runWithEvent(AbstractLaunchHistoryAction.java:420)
+	at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:229)
+	at org.eclipse.ui.internal.WWinPluginAction.runWithEvent(WWinPluginAction.java:218)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:580)
+	at org.eclipse.jface.action.ActionContributionItem.lambda$5(ActionContributionItem.java:453)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4273)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1066)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4071)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3659)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1155)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:342)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:648)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:342)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:555)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:402)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:651)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:588)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1459)
+
+!ENTRY org.eclipse.linuxtools.docker.ui 4 0 2024-12-19 20:29:56.568
+!MESSAGE Unable to find the launch configuration to build the Docker image from the selected Dockerfile.
+!STACK 0
+org.eclipse.linuxtools.docker.core.DockerException: Unable to find the launch configuration to build the Docker image from the selected Dockerfile.
+	at org.eclipse.linuxtools.internal.docker.ui.launch.BuildDockerImageShortcut.launch(BuildDockerImageShortcut.java:71)
+	at org.eclipse.linuxtools.internal.docker.ui.launch.BaseResourceAwareLaunchShortcut.launch(BaseResourceAwareLaunchShortcut.java:90)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchShortcutExtension.launch(LaunchShortcutExtension.java:415)
+	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.launchShortcut(ContextRunner.java:262)
+	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.selectAndLaunch(ContextRunner.java:188)
+	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.launch(ContextRunner.java:100)
+	at org.eclipse.debug.ui.actions.AbstractLaunchToolbarAction.runInternal(AbstractLaunchToolbarAction.java:90)
+	at org.eclipse.debug.ui.actions.AbstractLaunchHistoryAction.runWithEvent(AbstractLaunchHistoryAction.java:420)
+	at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:229)
+	at org.eclipse.ui.internal.WWinPluginAction.runWithEvent(WWinPluginAction.java:218)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:580)
+	at org.eclipse.jface.action.ActionContributionItem.lambda$5(ActionContributionItem.java:453)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4273)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1066)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4071)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3659)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1155)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:342)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:648)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:342)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:555)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:402)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:651)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:588)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1459)
+
+!ENTRY org.eclipse.tm4e.ui 4 0 2024-12-19 20:41:45.885
+!MESSAGE BadLocationException
+!STACK 0
+org.eclipse.jface.text.BadLocationException
+	at org.eclipse.jface.text.AbstractDocument.get(AbstractDocument.java:958)
+	at org.eclipse.core.internal.filebuffers.SynchronizableDocument.get(SynchronizableDocument.java:130)
+	at org.eclipse.tm4e.ui.internal.utils.MarkerUtils.updateTextMarkers(MarkerUtils.java:133)
+	at org.eclipse.tm4e.ui.internal.utils.MarkerUtils.updateTextMarkers(MarkerUtils.java:64)
+	at org.eclipse.tm4e.ui.text.TMPresentationReconciler$1.onModelTokensChanged(TMPresentationReconciler.java:124)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:60)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:1)
+	at org.eclipse.tm4e.core.internal.utils.AbstractListeners.lambda$0(AbstractListeners.java:51)
+	at java.base/java.util.concurrent.CopyOnWriteArrayList.forEach(CopyOnWriteArrayList.java:807)
+	at java.base/java.util.concurrent.CopyOnWriteArraySet.forEach(CopyOnWriteArraySet.java:425)
+	at org.eclipse.tm4e.core.internal.utils.AbstractListeners.dispatchEvent(AbstractListeners.java:51)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:70)
+	at org.eclipse.tm4e.core.model.TMModel$TokenizerThread.revalidateTokens(TMModel.java:290)
+	at org.eclipse.tm4e.core.model.TMModel$TokenizerThread.run(TMModel.java:170)
+
+!ENTRY org.eclipse.tm4e.ui 4 0 2024-12-19 20:42:16.568
+!MESSAGE BadLocationException
+!STACK 0
+org.eclipse.jface.text.BadLocationException
+	at org.eclipse.jface.text.AbstractDocument.get(AbstractDocument.java:958)
+	at org.eclipse.core.internal.filebuffers.SynchronizableDocument.get(SynchronizableDocument.java:130)
+	at org.eclipse.tm4e.ui.internal.utils.MarkerUtils.updateTextMarkers(MarkerUtils.java:133)
+	at org.eclipse.tm4e.ui.internal.utils.MarkerUtils.updateTextMarkers(MarkerUtils.java:64)
+	at org.eclipse.tm4e.ui.text.TMPresentationReconciler$1.onModelTokensChanged(TMPresentationReconciler.java:124)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:60)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:1)
+	at org.eclipse.tm4e.core.internal.utils.AbstractListeners.lambda$0(AbstractListeners.java:51)
+	at java.base/java.util.concurrent.CopyOnWriteArrayList.forEach(CopyOnWriteArrayList.java:807)
+	at java.base/java.util.concurrent.CopyOnWriteArraySet.forEach(CopyOnWriteArraySet.java:425)
+	at org.eclipse.tm4e.core.internal.utils.AbstractListeners.dispatchEvent(AbstractListeners.java:51)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:70)
+	at org.eclipse.tm4e.core.model.TMModel$TokenizerThread.revalidateTokens(TMModel.java:290)
+	at org.eclipse.tm4e.core.model.TMModel$TokenizerThread.run(TMModel.java:170)
+
+!ENTRY org.eclipse.tm4e.ui 4 0 2024-12-19 20:42:19.119
+!MESSAGE BadLocationException
+!STACK 0
+org.eclipse.jface.text.BadLocationException
+	at org.eclipse.jface.text.AbstractDocument.get(AbstractDocument.java:958)
+	at org.eclipse.core.internal.filebuffers.SynchronizableDocument.get(SynchronizableDocument.java:130)
+	at org.eclipse.tm4e.ui.internal.utils.MarkerUtils.updateTextMarkers(MarkerUtils.java:133)
+	at org.eclipse.tm4e.ui.internal.utils.MarkerUtils.updateTextMarkers(MarkerUtils.java:64)
+	at org.eclipse.tm4e.ui.text.TMPresentationReconciler$1.onModelTokensChanged(TMPresentationReconciler.java:124)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:60)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:1)
+	at org.eclipse.tm4e.core.internal.utils.AbstractListeners.lambda$0(AbstractListeners.java:51)
+	at java.base/java.util.concurrent.CopyOnWriteArrayList.forEach(CopyOnWriteArrayList.java:807)
+	at java.base/java.util.concurrent.CopyOnWriteArraySet.forEach(CopyOnWriteArraySet.java:425)
+	at org.eclipse.tm4e.core.internal.utils.AbstractListeners.dispatchEvent(AbstractListeners.java:51)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:70)
+	at org.eclipse.tm4e.core.model.TMModel$TokenizerThread.revalidateTokens(TMModel.java:290)
+	at org.eclipse.tm4e.core.model.TMModel$TokenizerThread.run(TMModel.java:170)
+
+!ENTRY org.eclipse.tm4e.ui 4 0 2024-12-19 20:42:21.262
+!MESSAGE BadLocationException
+!STACK 0
+org.eclipse.jface.text.BadLocationException
+	at org.eclipse.jface.text.AbstractDocument.get(AbstractDocument.java:958)
+	at org.eclipse.core.internal.filebuffers.SynchronizableDocument.get(SynchronizableDocument.java:130)
+	at org.eclipse.tm4e.ui.internal.utils.MarkerUtils.updateTextMarkers(MarkerUtils.java:133)
+	at org.eclipse.tm4e.ui.internal.utils.MarkerUtils.updateTextMarkers(MarkerUtils.java:64)
+	at org.eclipse.tm4e.ui.text.TMPresentationReconciler$1.onModelTokensChanged(TMPresentationReconciler.java:124)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:60)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:1)
+	at org.eclipse.tm4e.core.internal.utils.AbstractListeners.lambda$0(AbstractListeners.java:51)
+	at java.base/java.util.concurrent.CopyOnWriteArrayList.forEach(CopyOnWriteArrayList.java:807)
+	at java.base/java.util.concurrent.CopyOnWriteArraySet.forEach(CopyOnWriteArraySet.java:425)
+	at org.eclipse.tm4e.core.internal.utils.AbstractListeners.dispatchEvent(AbstractListeners.java:51)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:70)
+	at org.eclipse.tm4e.core.model.TMModel$TokenizerThread.revalidateTokens(TMModel.java:290)
+	at org.eclipse.tm4e.core.model.TMModel$TokenizerThread.run(TMModel.java:170)
+
+!ENTRY org.eclipse.tm4e.ui 4 0 2024-12-19 20:42:22.926
+!MESSAGE BadLocationException
+!STACK 0
+org.eclipse.jface.text.BadLocationException
+	at org.eclipse.jface.text.AbstractDocument.get(AbstractDocument.java:958)
+	at org.eclipse.core.internal.filebuffers.SynchronizableDocument.get(SynchronizableDocument.java:130)
+	at org.eclipse.tm4e.ui.internal.utils.MarkerUtils.updateTextMarkers(MarkerUtils.java:133)
+	at org.eclipse.tm4e.ui.internal.utils.MarkerUtils.updateTextMarkers(MarkerUtils.java:64)
+	at org.eclipse.tm4e.ui.text.TMPresentationReconciler$1.onModelTokensChanged(TMPresentationReconciler.java:124)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:60)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:1)
+	at org.eclipse.tm4e.core.internal.utils.AbstractListeners.lambda$0(AbstractListeners.java:51)
+	at java.base/java.util.concurrent.CopyOnWriteArrayList.forEach(CopyOnWriteArrayList.java:807)
+	at java.base/java.util.concurrent.CopyOnWriteArraySet.forEach(CopyOnWriteArraySet.java:425)
+	at org.eclipse.tm4e.core.internal.utils.AbstractListeners.dispatchEvent(AbstractListeners.java:51)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:70)
+	at org.eclipse.tm4e.core.model.TMModel$TokenizerThread.revalidateTokens(TMModel.java:290)
+	at org.eclipse.tm4e.core.model.TMModel$TokenizerThread.run(TMModel.java:170)
+
+!ENTRY org.eclipse.tm4e.ui 4 0 2024-12-19 20:42:25.706
+!MESSAGE BadLocationException
+!STACK 0
+org.eclipse.jface.text.BadLocationException
+	at org.eclipse.jface.text.AbstractDocument.get(AbstractDocument.java:958)
+	at org.eclipse.core.internal.filebuffers.SynchronizableDocument.get(SynchronizableDocument.java:130)
+	at org.eclipse.tm4e.ui.internal.utils.MarkerUtils.updateTextMarkers(MarkerUtils.java:133)
+	at org.eclipse.tm4e.ui.internal.utils.MarkerUtils.updateTextMarkers(MarkerUtils.java:64)
+	at org.eclipse.tm4e.ui.text.TMPresentationReconciler$1.onModelTokensChanged(TMPresentationReconciler.java:124)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:60)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:1)
+	at org.eclipse.tm4e.core.internal.utils.AbstractListeners.lambda$0(AbstractListeners.java:51)
+	at java.base/java.util.concurrent.CopyOnWriteArrayList.forEach(CopyOnWriteArrayList.java:807)
+	at java.base/java.util.concurrent.CopyOnWriteArraySet.forEach(CopyOnWriteArraySet.java:425)
+	at org.eclipse.tm4e.core.internal.utils.AbstractListeners.dispatchEvent(AbstractListeners.java:51)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:70)
+	at org.eclipse.tm4e.core.model.TMModel$TokenizerThread.revalidateTokens(TMModel.java:290)
+	at org.eclipse.tm4e.core.model.TMModel$TokenizerThread.run(TMModel.java:170)
+
+!ENTRY org.eclipse.tm4e.ui 4 0 2024-12-19 20:42:27.839
+!MESSAGE BadLocationException
+!STACK 0
+org.eclipse.jface.text.BadLocationException
+	at org.eclipse.jface.text.AbstractDocument.get(AbstractDocument.java:958)
+	at org.eclipse.core.internal.filebuffers.SynchronizableDocument.get(SynchronizableDocument.java:130)
+	at org.eclipse.tm4e.ui.internal.utils.MarkerUtils.updateTextMarkers(MarkerUtils.java:133)
+	at org.eclipse.tm4e.ui.internal.utils.MarkerUtils.updateTextMarkers(MarkerUtils.java:64)
+	at org.eclipse.tm4e.ui.text.TMPresentationReconciler$1.onModelTokensChanged(TMPresentationReconciler.java:124)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:60)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:1)
+	at org.eclipse.tm4e.core.internal.utils.AbstractListeners.lambda$0(AbstractListeners.java:51)
+	at java.base/java.util.concurrent.CopyOnWriteArrayList.forEach(CopyOnWriteArrayList.java:807)
+	at java.base/java.util.concurrent.CopyOnWriteArraySet.forEach(CopyOnWriteArraySet.java:425)
+	at org.eclipse.tm4e.core.internal.utils.AbstractListeners.dispatchEvent(AbstractListeners.java:51)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:70)
+	at org.eclipse.tm4e.core.model.TMModel$TokenizerThread.revalidateTokens(TMModel.java:290)
+	at org.eclipse.tm4e.core.model.TMModel$TokenizerThread.run(TMModel.java:170)
+
+!ENTRY org.eclipse.tm4e.ui 4 0 2024-12-19 20:42:29.988
+!MESSAGE BadLocationException
+!STACK 0
+org.eclipse.jface.text.BadLocationException
+	at org.eclipse.jface.text.AbstractDocument.get(AbstractDocument.java:958)
+	at org.eclipse.core.internal.filebuffers.SynchronizableDocument.get(SynchronizableDocument.java:130)
+	at org.eclipse.tm4e.ui.internal.utils.MarkerUtils.updateTextMarkers(MarkerUtils.java:133)
+	at org.eclipse.tm4e.ui.internal.utils.MarkerUtils.updateTextMarkers(MarkerUtils.java:64)
+	at org.eclipse.tm4e.ui.text.TMPresentationReconciler$1.onModelTokensChanged(TMPresentationReconciler.java:124)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:60)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:1)
+	at org.eclipse.tm4e.core.internal.utils.AbstractListeners.lambda$0(AbstractListeners.java:51)
+	at java.base/java.util.concurrent.CopyOnWriteArrayList.forEach(CopyOnWriteArrayList.java:807)
+	at java.base/java.util.concurrent.CopyOnWriteArraySet.forEach(CopyOnWriteArraySet.java:425)
+	at org.eclipse.tm4e.core.internal.utils.AbstractListeners.dispatchEvent(AbstractListeners.java:51)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:70)
+	at org.eclipse.tm4e.core.model.TMModel$TokenizerThread.revalidateTokens(TMModel.java:290)
+	at org.eclipse.tm4e.core.model.TMModel$TokenizerThread.run(TMModel.java:170)
+
+!ENTRY org.eclipse.tm4e.ui 4 0 2024-12-19 20:42:34.213
+!MESSAGE BadLocationException
+!STACK 0
+org.eclipse.jface.text.BadLocationException
+	at org.eclipse.jface.text.AbstractDocument.get(AbstractDocument.java:958)
+	at org.eclipse.core.internal.filebuffers.SynchronizableDocument.get(SynchronizableDocument.java:130)
+	at org.eclipse.tm4e.ui.internal.utils.MarkerUtils.updateTextMarkers(MarkerUtils.java:133)
+	at org.eclipse.tm4e.ui.internal.utils.MarkerUtils.updateTextMarkers(MarkerUtils.java:64)
+	at org.eclipse.tm4e.ui.text.TMPresentationReconciler$1.onModelTokensChanged(TMPresentationReconciler.java:124)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:60)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:1)
+	at org.eclipse.tm4e.core.internal.utils.AbstractListeners.lambda$0(AbstractListeners.java:51)
+	at java.base/java.util.concurrent.CopyOnWriteArrayList.forEach(CopyOnWriteArrayList.java:807)
+	at java.base/java.util.concurrent.CopyOnWriteArraySet.forEach(CopyOnWriteArraySet.java:425)
+	at org.eclipse.tm4e.core.internal.utils.AbstractListeners.dispatchEvent(AbstractListeners.java:51)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:70)
+	at org.eclipse.tm4e.core.model.TMModel$TokenizerThread.revalidateTokens(TMModel.java:290)
+	at org.eclipse.tm4e.core.model.TMModel$TokenizerThread.run(TMModel.java:170)
+
+!ENTRY org.eclipse.tm4e.ui 4 0 2024-12-19 20:42:36.553
+!MESSAGE BadLocationException
+!STACK 0
+org.eclipse.jface.text.BadLocationException
+	at org.eclipse.jface.text.AbstractDocument.get(AbstractDocument.java:958)
+	at org.eclipse.core.internal.filebuffers.SynchronizableDocument.get(SynchronizableDocument.java:130)
+	at org.eclipse.tm4e.ui.internal.utils.MarkerUtils.updateTextMarkers(MarkerUtils.java:133)
+	at org.eclipse.tm4e.ui.internal.utils.MarkerUtils.updateTextMarkers(MarkerUtils.java:64)
+	at org.eclipse.tm4e.ui.text.TMPresentationReconciler$1.onModelTokensChanged(TMPresentationReconciler.java:124)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:60)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:1)
+	at org.eclipse.tm4e.core.internal.utils.AbstractListeners.lambda$0(AbstractListeners.java:51)
+	at java.base/java.util.concurrent.CopyOnWriteArrayList.forEach(CopyOnWriteArrayList.java:807)
+	at java.base/java.util.concurrent.CopyOnWriteArraySet.forEach(CopyOnWriteArraySet.java:425)
+	at org.eclipse.tm4e.core.internal.utils.AbstractListeners.dispatchEvent(AbstractListeners.java:51)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:70)
+	at org.eclipse.tm4e.core.model.TMModel$TokenizerThread.revalidateTokens(TMModel.java:290)
+	at org.eclipse.tm4e.core.model.TMModel$TokenizerThread.run(TMModel.java:170)
+
+!ENTRY org.eclipse.tm4e.ui 4 0 2024-12-19 20:42:38.904
+!MESSAGE BadLocationException
+!STACK 0
+org.eclipse.jface.text.BadLocationException
+	at org.eclipse.jface.text.AbstractDocument.get(AbstractDocument.java:958)
+	at org.eclipse.core.internal.filebuffers.SynchronizableDocument.get(SynchronizableDocument.java:130)
+	at org.eclipse.tm4e.ui.internal.utils.MarkerUtils.updateTextMarkers(MarkerUtils.java:133)
+	at org.eclipse.tm4e.ui.internal.utils.MarkerUtils.updateTextMarkers(MarkerUtils.java:64)
+	at org.eclipse.tm4e.ui.text.TMPresentationReconciler$1.onModelTokensChanged(TMPresentationReconciler.java:124)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:60)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:1)
+	at org.eclipse.tm4e.core.internal.utils.AbstractListeners.lambda$0(AbstractListeners.java:51)
+	at java.base/java.util.concurrent.CopyOnWriteArrayList.forEach(CopyOnWriteArrayList.java:807)
+	at java.base/java.util.concurrent.CopyOnWriteArraySet.forEach(CopyOnWriteArraySet.java:425)
+	at org.eclipse.tm4e.core.internal.utils.AbstractListeners.dispatchEvent(AbstractListeners.java:51)
+	at org.eclipse.tm4e.core.model.ModelTokensChangedEvent$Listeners.dispatchEvent(ModelTokensChangedEvent.java:70)
+	at org.eclipse.tm4e.core.model.TMModel$TokenizerThread.revalidateTokens(TMModel.java:290)
+	at org.eclipse.tm4e.core.model.TMModel$TokenizerThread.run(TMModel.java:170)
+
+!ENTRY org.eclipse.linuxtools.docker.ui 4 0 2024-12-19 20:42:44.807
+!MESSAGE Unable to find the launch configuration to build the Docker image from the selected Dockerfile.
+!STACK 0
+org.eclipse.linuxtools.docker.core.DockerException: Unable to find the launch configuration to build the Docker image from the selected Dockerfile.
+	at org.eclipse.linuxtools.internal.docker.ui.launch.BuildDockerImageShortcut.launch(BuildDockerImageShortcut.java:71)
+	at org.eclipse.linuxtools.internal.docker.ui.launch.BaseResourceAwareLaunchShortcut.launch(BaseResourceAwareLaunchShortcut.java:90)
+	at org.eclipse.debug.internal.ui.launchConfigurations.LaunchShortcutExtension.launch(LaunchShortcutExtension.java:415)
+	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.launchShortcut(ContextRunner.java:262)
+	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.selectAndLaunch(ContextRunner.java:188)
+	at org.eclipse.debug.internal.ui.contextlaunching.ContextRunner.launch(ContextRunner.java:100)
+	at org.eclipse.debug.ui.actions.AbstractLaunchToolbarAction.runInternal(AbstractLaunchToolbarAction.java:90)
+	at org.eclipse.debug.ui.actions.AbstractLaunchHistoryAction.runWithEvent(AbstractLaunchHistoryAction.java:420)
+	at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:229)
+	at org.eclipse.ui.internal.WWinPluginAction.runWithEvent(WWinPluginAction.java:218)
+	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:580)
+	at org.eclipse.jface.action.ActionContributionItem.lambda$5(ActionContributionItem.java:453)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4273)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1066)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4071)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3659)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1155)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:342)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:648)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:342)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:555)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:402)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:651)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:588)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1459)
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-12-19 20:44:44.086
+!MESSAGE ExecutionException occurred during shutdown of EndpointProxy for org.eclipse.lsp4j.jsonrpc.RemoteEndpoint@7dddf88f
+!STACK 0
+java.util.concurrent.ExecutionException: org.eclipse.lsp4j.jsonrpc.JsonRpcException: java.io.IOException: The pipe is being closed
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:396)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$10(LanguageServerWrapper.java:493)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+Caused by: org.eclipse.lsp4j.jsonrpc.JsonRpcException: java.io.IOException: The pipe is being closed
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageConsumer.consume(StreamMessageConsumer.java:72)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$3(LanguageServerWrapper.java:310)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.request(RemoteEndpoint.java:161)
+	at org.eclipse.lsp4j.jsonrpc.services.EndpointProxy.invoke(EndpointProxy.java:91)
+	at jdk.proxy20/jdk.proxy20.$Proxy57.shutdown(Unknown Source)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$10(LanguageServerWrapper.java:491)
+	... 7 more
+Caused by: java.io.IOException: The pipe is being closed
+	at java.base/java.io.FileOutputStream.writeBytes(Native Method)
+	at java.base/java.io.FileOutputStream.write(FileOutputStream.java:349)
+	at java.base/java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:81)
+	at java.base/java.io.BufferedOutputStream.flush(BufferedOutputStream.java:142)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageConsumer.consume(StreamMessageConsumer.java:69)
+	... 12 more
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-19 20:44:44.088
+!MESSAGE DelegatingStreamConnectionProvider - Stopping Boot LS
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2024-12-19 20:44:44.088
+!MESSAGE Stopped org.springframework.tooling.boot.ls LS process 17444
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2024-12-19 20:44:44.101
+!MESSAGE Command list starting LS: org.springframework.tooling.boot.ls
+START:
+C:\Users\DELL\Downloads\spring-tool-suite-4-4.21.1.RELEASE-e4.30.0-win32.win32.x86_64.self-extracting\sts-4.21.1.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.10.v20240120-1143\jre\bin\javaw.exe
+-cp
+C:\Users\DELL\Downloads\spring-tool-suite-4-4.21.1.RELEASE-e4.30.0-win32.win32.x86_64.self-extracting\sts-4.21.1.RELEASE\plugins\org.springframework.tooling.boot.ls_1.52.0.202401312010\servers\spring-boot-language-server\BOOT-INF\classes;C:\Users\DELL\Downloads\spring-tool-suite-4-4.21.1.RELEASE-e4.30.0-win32.win32.x86_64.self-extracting\sts-4.21.1.RELEASE\plugins\org.springframework.tooling.boot.ls_1.52.0.202401312010\servers\spring-boot-language-server\BOOT-INF\lib\*
+-Dsts.lsp.client=eclipse
+-Dlsp.completions.indentation.enable=true
+-Xmx1024m
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:TieredStopAtLevel=1
+-Xlog:jni+resolve=off
+-Dspring.config.location=file:C:\Users\DELL\Downloads\spring-tool-suite-4-4.21.1.RELEASE-e4.30.0-win32.win32.x86_64.self-extracting\sts-4.21.1.RELEASE\plugins\org.springframework.tooling.boot.ls_1.52.0.202401312010\servers\spring-boot-language-server\BOOT-INF\classes\application.properties
+-XX:ErrorFile=D:/backend java/springboot-practice/.metadata/.plugins/org.springframework.tooling.boot.ls/fatal-error-spring-boot_1734621284100
+org.springframework.ide.vscode.boot.app.BootLanguageServerBootApp
+--languageserver.hover-timeout=225
+END
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-19 20:44:44.101
+!MESSAGE DelegatingStreamConnectionProvider - Starting Boot LS
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2024-12-19 20:44:44.137
+!MESSAGE Started org.springframework.tooling.boot.ls LS process 22564
+
+!ENTRY org.eclipse.lsp4e 2 0 2024-12-19 20:44:56.938
+!MESSAGE Could not get hover region due to timeout after 1000 milliseconds
+!STACK 0
+java.util.concurrent.TimeoutException
+	at java.base/java.util.concurrent.CompletableFuture.timedGet(CompletableFuture.java:1960)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2095)
+	at org.eclipse.lsp4e.operations.hover.LSPTextHover.getHoverRegion(LSPTextHover.java:155)
+	at org.eclipse.ui.internal.genericeditor.hover.CompositeTextHover.getHoverRegion(CompositeTextHover.java:101)
+	at org.eclipse.jface.text.TextViewerHoverManager.computeInformation(TextViewerHoverManager.java:128)
+	at org.eclipse.jface.text.AbstractInformationControlManager.doShowInformation(AbstractInformationControlManager.java:1101)
+	at org.eclipse.jface.text.AbstractHoverInformationControlManager$MouseTracker.mouseHover(AbstractHoverInformationControlManager.java:511)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:212)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4273)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1066)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4071)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3659)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1155)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:342)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:648)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:342)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:555)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:402)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:651)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:588)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1459)
+
+!ENTRY org.eclipse.lsp4e 2 0 2024-12-19 20:44:57.941
+!MESSAGE Could not get hover information due to timeout after 1000 milliseconds
+!STACK 0
+java.util.concurrent.TimeoutException
+	at java.base/java.util.concurrent.CompletableFuture.timedGet(CompletableFuture.java:1960)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2095)
+	at org.eclipse.lsp4e.operations.hover.LSPTextHover.getHoverInfo(LSPTextHover.java:76)
+	at org.eclipse.ui.internal.genericeditor.hover.CompositeTextHover.getHoverInfo2(CompositeTextHover.java:60)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.eclipse.lsp4e 2 0 2024-12-19 22:06:03.522
+!MESSAGE Could not get hover region due to timeout after 1000 milliseconds
+!STACK 0
+java.util.concurrent.TimeoutException
+	at java.base/java.util.concurrent.CompletableFuture.timedGet(CompletableFuture.java:1960)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2095)
+	at org.eclipse.lsp4e.operations.hover.LSPTextHover.getHoverRegion(LSPTextHover.java:155)
+	at org.eclipse.ui.internal.genericeditor.hover.CompositeTextHover.getHoverRegion(CompositeTextHover.java:101)
+	at org.eclipse.jface.text.TextViewerHoverManager.computeInformation(TextViewerHoverManager.java:128)
+	at org.eclipse.jface.text.AbstractInformationControlManager.doShowInformation(AbstractInformationControlManager.java:1101)
+	at org.eclipse.jface.text.AbstractHoverInformationControlManager$MouseTracker.mouseHover(AbstractHoverInformationControlManager.java:511)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:212)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4273)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1066)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4071)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3659)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1155)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:342)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:648)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:342)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:555)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:402)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:651)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:588)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1459)
+
+!ENTRY org.eclipse.lsp4e 2 0 2024-12-19 22:06:05.011
+!MESSAGE Could not get hover information due to timeout after 1000 milliseconds
+!STACK 0
+java.util.concurrent.TimeoutException
+	at java.base/java.util.concurrent.CompletableFuture.timedGet(CompletableFuture.java:1960)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2095)
+	at org.eclipse.lsp4e.operations.hover.LSPTextHover.getHoverInfo(LSPTextHover.java:76)
+	at org.eclipse.ui.internal.genericeditor.hover.CompositeTextHover.getHoverInfo2(CompositeTextHover.java:60)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
